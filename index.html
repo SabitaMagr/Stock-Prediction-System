@@ -1,0 +1,17 @@
+<html>
+
+<body>
+    <h2>Stock Price Prediction</h2>
+    <form action="{{ url_for('predict') }}" method="POST">
+        <!-- Add input fields for each feature in your dataset -->
+        <label for="feature1">Feature 1:</label>
+        <input type="text" name="feature1" required>
+        <!-- Add more input fields for other features -->
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+    <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+
+</html>
