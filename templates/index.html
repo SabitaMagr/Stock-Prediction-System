@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group div {
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: small;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="number"] {
+            width: 92%;
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Button container and centering */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: auto;
+            text-align: center;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+
+        h3 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Stock Price Prediction</h2>
+    <form action="{{ url_for('predict') }}" method="POST">
+        <div class="form-group">
+            <div>
+                <label for="open">Opening Price:</label>
+                <input type="number" name="open" id="open" required>
+            </div>
+
+            <div>
+                <label for="high">Highest Price:</label>
+                <input type="number" name="high" id="high" required>
+            </div>
+
+            <div>
+                <label for="low">Lowest Price:</label>
+                <input type="number" name="low" id="low" required>
+            </div>
+
+            <div>
+                <label for="volume">Trading Volume:</label>
+                <input type="number" name="volume" id="volume" required>
+            </div>
+
+            <div>
+                <label for="macd">Moving Average Convergence Divergence (MACD):</label>
+                <input type="number" name="macd" id="macd" required>
+            </div>
+
+            <div>
+                <label for="rsi">Relative Strength Index (RSI):</label>
+                <input type="number" name="rsi" id="rsi" required>
+            </div>
+
+            <div>
+                <label for="atr">Average True Range (ATR):</label>
+                <input type="number" name="atr" id="atr" required>
+            </div>
+
+            <div>
+                <label for="mfi">Money Flow Index (MFI):</label>
+                <input type="number" name="mfi" id="mfi" required>
+            </div>
+
+            <div>
+                <label for="cpi">Consumer Price Index (CPI):</label>
+                <input type="number" name="cpi" id="cpi" required>
+            </div>
+
+            <div>
+                <label for="usdx">Exchange Rate to US Dollar (USDX):</label>
+                <input type="number" name="usdx" id="usdx" required>
+            </div>
+
+            <div>
+                <label for="ir">Inflation Rate (IR):</label>
+                <input type="number" name="ir" id="ir" required>
+            </div>
+
+            <div>
+                <label for="tb">Treasury Bill Rate (TB):</label>
+                <input type="number" name="tb" id="tb" required>
+            </div>
+
+            <div>
+                <label for="effr">Effective Federal Funds Rate (EFFR):</label>
+                <input type="number" name="effr" id="effr" required>
+            </div>
+
+            <div>
+                <label for="rmt">Remittance (RMT):</label>
+                <input type="number" name="rmt" id="rmt" required>
+            </div>
+
+            <div>
+                <label for="score">Model Score:</label>
+                <input type="number" name="score" id="score" required>
+            </div>
+        </div>
+
+        <!-- Centered Submit Button -->
+        <div class="button-container">
+            <input type="submit" value="Predict">
+        </div>
+    </form>
+
+    {% if prediction_text %}
+    <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+
+</html>
