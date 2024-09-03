@@ -44,8 +44,8 @@ def predict():
             float(data['score'])
         ])
         
-        # Assuming your model needs a sequence of timesteps, reshape appropriately
-        features_reshaped = features.reshape(1, 1, 15)  # Update '15' if you have more/less features
+        # Reshape for LSTM model input
+        features_reshaped = features.reshape(1, 1, 15)  # (batch_size=1, timesteps=1, features=15)
         
         # Make prediction using the loaded model
         prediction = model.predict(features_reshaped)
